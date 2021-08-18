@@ -41,6 +41,15 @@
 // nhentai
 // @include      *nhentai.net/g/*
 
+// e-hentai/exhentai
+// @include      *e*hentai.org/g/*
+
+// panda.chaika.moe
+// @include      *panda.chaika.moe/*
+
+// fakku
+// @include      *fakku.net/hentai/*
+
 // @run-at       document-end
 // @grant        GM_setClipboard
 // @grant        GM_setValue
@@ -242,6 +251,41 @@ function copyBooruTags(noRating)
 
     // paheal-like
     insertTags(tags, 'a.tag_name', '');
+
+    // e-hentai like
+    insertTags(tags, 'div[id^="td_reclass:"] a[id^="ta_reclass:"]', 'reclass:');
+    insertTags(tags, 'div[id^="td_language:"] a[id^="ta_language:"]', 'language:');
+    insertTags(tags, 'div[id^="td_parody:"] a[id^="ta_parody:"]', 'series:');
+    insertTags(tags, 'div[id^="td_character:"] a[id^="ta_character:"]', 'character:');
+    insertTags(tags, 'div[id^="td_group:"] a[id^="ta_group:"]', 'group:');
+    insertTags(tags, 'div[id^="td_artist:"] a[id^="ta_artist:"]', 'creator:');
+    insertTags(tags, 'div[id^="td_male:"] a[id^="ta_male:"]', 'male:');
+    insertTags(tags, 'div[id^="td_female:"] a[id^="ta_female:"]', 'female:');
+    insertTags(tags, 'div[id^="td_"]:not([id^="td_language:"]):not([id^="td_parody:"]):not([id^="td_character:"]):not([id^="td_group:"]):not([id^="td_artist:"]):not([id^="td_male:"]):not([id^="td_female:"]) a[id^="ta_"]:not([id^="ta_language:"]):not([id^="ta_parody:"]):not([id^="ta_character:"]):not([id^="ta_group:"]):not([id^="ta_artist:"]):not([id^="ta_male:"]):not([id^="ta_female:"])', '');
+
+    // panda.chaika.moe like
+    insertTags(tags, 'a[href^="/tag/reclass:"]', 'reclass:');
+    insertTags(tags, 'a[href^="/tag/language:"]', 'language:');
+    insertTags(tags, 'a[href^="/tag/parody:"]', 'series:');
+    insertTags(tags, 'a[href^="/tag/character:"]', 'character:');
+    insertTags(tags, 'a[href^="/tag/group:"]', 'group:');
+    insertTags(tags, 'a[href^="/tag/publisher:"]', 'publisher:');
+    insertTags(tags, 'a[href^="/tag/magazine:"]', 'magazine:');
+    insertTags(tags, 'a[href^="/tag/artist:"]', 'creator:');
+    insertTags(tags, 'a[href^="/tag/male:"]', 'male:');
+    insertTags(tags, 'a[href^="/tag/female:"]', 'female:');
+    insertTags(tags, 'a[href^="/tag/"]:not([href^="/tag/language:"]):not([href^="/tag/parody:"]):not([href^="/tag/character:"]):not([href^="/tag/group:"]):not([href^="/tag/publisher:"]):not([href^="/tag/magazine:"]):not([href^="/tag/artist:"]):not([href^="/tag/male:"]):not([href^="/tag/female:"])', '');
+
+    // fakku like
+    insertTags(tags, 'div.row-right a[href^="/tags/"]:not([href^="/tags/hentai"]):not([href^="/tags/doujin"])', '');
+    insertTags(tags, 'div.row-right a[href^="/english"]', 'language:');
+    insertTags(tags, 'div.row-right a[href^="/series/"]', 'series:');
+    insertTags(tags, 'div.row-right a[href^="/circle/"]', 'group:');
+    insertTags(tags, 'div.row-right a[href^="/publishers/"]', 'publisher:');
+    insertTags(tags, 'div.row-right a[href^="/magazines/"]', 'magazine:');
+    insertTags(tags, 'div.row-right a[href^="/artists/"]', 'creator:');
+    insertTags(tags, 'div.row-right a[href^="/events/"]', 'event:');
+    insertTags(tags, 'div.content-name h1', 'title:');
     
 
     if (!noRating)
