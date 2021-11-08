@@ -4,8 +4,8 @@
 // @version      1.1.6
 // @description  Copy current post tags and rating on boorus and illustration2vec in to the clipboard for easy import in to a program or another booru.
 // @author       William Moodhe
-// @downloadURL  https://github.com/JetBoom/boorutagparser/raw/master/boorutagparser.user.js
-// @updateURL    https://github.com/JetBoom/boorutagparser/raw/master/boorutagparser.user.js
+// @downloadURL  https://github.com/kotonbu/boorutagparser/raw/master/boorutagparser.user.js
+// @updateURL    https://github.com/kotonbu/boorutagparser/raw/master/boorutagparser.user.js
 
 // Illustration2Vec
 // @include      *demo.illustration2vec.net*
@@ -197,12 +197,12 @@ function copyBooruTags(noRating)
 {
     var tags = [];
     // Instead of having a list of boorus and their tags and tag structures I just make a big catch-all.
-    
+
     // danbooru-like-new
     insertTags(tags, '#tag-list li.tag-type-3 > a.search-tag', 'series:');
     insertTags(tags, '#tag-list li.tag-type-1 > a.search-tag', 'creator:');
     insertTags(tags, '#tag-list li.tag-type-4 > a.search-tag', 'character:');
-    insertTags(tags, '#tag-list li.tag-type-0 > a.search-tag', '');    
+    insertTags(tags, '#tag-list li.tag-type-0 > a.search-tag', '');
 
     // danbooru-like-old
     insertTags(tags, '#tag-list li.category-3 > a.search-tag', 'series:');
@@ -245,7 +245,7 @@ function copyBooruTags(noRating)
 
     // sofurry like
     insertTags(tags, '.titlehover > a', '');
-    
+
     // booru.org-like
     insertTags(tags, '#tag_list li a', '');
 
@@ -280,13 +280,13 @@ function copyBooruTags(noRating)
     insertTags(tags, 'div.table-cell a[href^="/tags/"]:not([href^="/tags/hentai"]):not([href^="/tags/doujin"])', '');
     insertTags(tags, 'div.table-cell a[href^="/english"]', 'language:');
     insertTags(tags, 'div.table-cell a[href^="/series/"]', 'series:');
-    insertTags(tags, 'div.table-cell a[href^="/circle/"]', 'group:');
+    insertTags(tags, 'div.table-cell a[href^="/circles/"]', 'group:');
     insertTags(tags, 'div.table-cell a[href^="/publishers/"]', 'publisher:');
     insertTags(tags, 'div.table-cell a[href^="/magazines/"]', 'magazine:');
     insertTags(tags, 'div.table-cell a[href^="/artists/"]', 'creator:');
     insertTags(tags, 'div.table-cell a[href^="/events/"]', 'event:');
     insertTags(tags, 'div.sm\\:table-cell h1', 'title:');
-    
+
 
     if (!noRating)
     {
@@ -412,8 +412,8 @@ function doDownload()
 {
     var a = document.querySelector('a.original-file-unchanged');
     if (!a)
-        a = document.querySelector('#image-download-link > a, a[href*="/data/_"], #post-information > ul > li > a[href*="/__"], a#highres, a[itemprop="contentSize"], li > a[href*="/images/"], section#image-container > a > img, img[src*="/_images/"], a[href*="/img/download"][title="Download (short filename)"], a[href*="/img/download"][title="Download (no tags in filename)"], form[action*="/_images/"], source[src], div a#image-link[href*="/data/"], div video[id="image"]');    
-    
+        a = document.querySelector('#image-download-link > a, a[href*="/data/_"], #post-information > ul > li > a[href*="/__"], a#highres, a[itemprop="contentSize"], li > a[href*="/images/"], section#image-container > a > img, img[src*="/_images/"], a[href*="/img/download"][title="Download (short filename)"], a[href*="/img/download"][title="Download (no tags in filename)"], form[action*="/_images/"], source[src], div a#image-link[href*="/data/"], div video[id="image"]');
+
     if (!a)
         return;
 
